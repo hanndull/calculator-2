@@ -5,60 +5,56 @@ calculator program yourself in this file.
 """
 
 from arithmetic import *
+from functools import reduce
 
 def evaluate_input(calcinput):
-
-
-    
-    arguments = calcinput[1:]
-    array = []
-
-    for argument in arguments:
-        array.append(floats(argument))
-    print(array,"this is working")    
-        
-
-
-    #print("arguments working!", arguments)
     """evaluates user input and calls appropriate arithmetic function"""
-
     prefix = calcinput[0]
     
     if prefix == "q":
         return "q"
-    
-    if len(calcinput) == 2:
-        calcinput1 = float(calcinput[1])  
 
-    elif len(calcinput) >= 3:    
-        calcinput1 = float(calcinput[1])
-        calcinput2 = float(calcinput[2])
+    arguments = calcinput[1:]
+    array = []
+
+    for argument in arguments:
+        array.append(float(argument))
+    # print(array,"this is working")    
+        
+  
+    
+    # if len(calcinput) == 2:
+    #     calcinput1 = float(calcinput[1])  
+
+    # elif len(calcinput) >= 3:    
+    #     calcinput1 = float(calcinput[1])
+    #     calcinput2 = float(calcinput[2])
             
 
         
     if prefix == '+':
-        return add(calcinput1, calcinput2)
-    
+        return reduce(add,array)
+      
     elif prefix == "-":
-        return subtract(calcinput1, calcinput2)
+        return reduce(subtract,array)
     
     elif prefix == "*":
-        return multiply(calcinput1, calcinput2)
+        return reduce(multiply, array)
     
     elif prefix == "/":
-        return divide(calcinput1, calcinput2)
+        return reduce(divide, array)
     
     elif prefix == "square":
-        return square(calcinput1)
+        return reduce(square, array)
     
     elif prefix == "cube":
-        return cube(calcinput1)
+        return reduce(cube, array)
     
     elif prefix == "pow":
-        return power(calcinput1, calcinput2)
+        return reduce(power, array)
     
     elif prefix == "mod":
-        return mod(calcinput1, calcinput2)    
+        return reduce(mod, array)    
 
 
 
